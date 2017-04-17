@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+     <div class="panel panel-primary" id="login-box">
+      <div class="panel-body">
+        <h2><%= t(".resend_instructions") %></h2>
+        <p class="description"><%= t(".resend_instructions_description") %></p>
+        <%= show_error_messages!(resource) %>
+        <%= form_for resource, url: confirmation_path(resource_name), html: { method: :post } do |f| %>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">email</i>
+              </span>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= f.submit t(".resend_instructions_button"), class: "btn btn-primary btn-lg col-xs-12" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

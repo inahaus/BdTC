@@ -1,0 +1,57 @@
+<div class="vertical-align">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3">
+    <div class="panel" id="login-box">
+      <div class="panel-heading">
+        <h1>
+          TimeOverflow
+        </h1>
+      </div>
+      <div class="panel-body">
+        <%= show_error_messages!(resource) %>
+        <%= form_for resource, url: session_path(resource_name) do |f| %>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">email</i>
+              </span>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">lock</i>
+              </span>
+              <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
+              <span class="input-group-addon show-password">
+                <i class="material-icons">visibility</i>
+              </span>
+            </div>
+          </div>
+          <div class="form-group" id="remember-me-wrapper">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="checkbox">
+                  <%= f.label :remember_me do |nada| %>
+                    <%= f.check_box :remember_me %>
+                    <%= t("application.login_form.remember_check") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= f.submit t("application.login_form.button"), class: "btn btn-primary btn-lg col-xs-12" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="panel-footer">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,424 @@
+es:
+  # NOMBRES DE LAS COSAS
+  activerecord:
+
+    models:
+      # Para usar:
+      # User.model_name.human
+      user:
+        one: Usuario
+        other: Usuarios
+      organization:
+        one: Banco de Tiempo
+        other: Bancos de Tiempo
+      category:
+        one: Categoría
+        other: Categorías
+      offer:
+        one: Oferta
+        other: Ofertas
+      inquiry:
+        one: Demanda
+        other: Demandas
+      transfer:
+        one: Transferencia
+        other: Transferencias
+      post:
+        one: Anuncio
+        other: Anuncios
+      comment:
+        one: Comentario
+        other: Comentarios
+
+    attributes:
+      common: &common_attributes
+        created_at: Creado
+        updated_at: Actualizado
+      user:
+        <<: *common_attributes
+        username: Nombre
+        organization:
+        one: Banco de Tiempo
+        other: Bancos de Tiempo
+        email: Correo
+        registration_date: Fecha de alta
+        gender: Género
+        registration_number: Código de usuario
+        date_of_birth: Fecha de nacimiento
+        identity_document: DNI
+        phone: Teléfono
+        alt_phone: Teléfono alternativo
+        admin: Administrador de organización
+        superadmin: Administrador de sistema
+        last_sign_in_at: Fecha último login
+        description: Descripción
+        unconfirmed_email: Correo sin confirmar
+        notifications: Recibir notificaciones
+      organization:
+        <<: *common_attributes
+        name: Nombre
+        reg_number_seq: Número de secuencia de usuario
+        theme: Tema visual
+        email: Correo
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        description: Descripción
+        address: Dirección
+        neighborhood: Barrio
+        city: Ciudad
+      category:
+        <<: *common_attributes
+        name: Nombre
+        parent: Categoría padre
+        name_translations: Nombre (traducciones)
+      transfer:
+        <<: *common_attributes
+        amount: Cantidad
+        reason: Comentarios
+        source: Origen
+        hours: Horas
+        minutes: Minutos
+        post: Oferta
+      post:
+        <<: *common_attributes
+        title: Título
+        description: Descripción
+        category: Categoria
+        tag_list: Etiquetas
+        joinable: Se puede unir otros
+        permanent: Permanente
+        start_on: Empieza el
+        end_on: Termina el
+      account:
+        balance: Balance
+        organization: Organización
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: inválido
+        organization:
+          attributes:
+            web:
+              url_format_invalid: Formato de URL no válido
+        transfer:
+          attributes:
+            base:
+              same_account: No se puede hacer una transacción a la misma cuenta
+
+  # ETIQUETAS VARIADAS EN PLANTILLAS
+
+  application:
+    landing:
+      slogan: Valoramos el tiempo
+      sub_slogan: Hay un banco de tiempo cerca de tí
+      button: Entra
+    login_form:
+      email: Correo electrónico
+      password: Contraseña
+      remember_check: Recuérdame
+      button: Entra
+    terms_conditions: Términos del servicio
+    navbar:
+      administration: Administración
+      reports: Informes
+      stats: Estadísticas
+      users: Usuarios
+      categories: Servicios
+      organizations: Organizaciones
+      statistics: Estadísticas
+      global_activity: "Actividad global"
+      inactive_users: Usuarios inactivos
+      demographics: Datos demográficos
+      last_login: Último login
+      without_offers: Sin ofertas publicadas
+      type_of_swaps: Tipos de intecambios
+      statistics_all_transfers: Todas las transferencias
+      admin: Administrar
+      adminshort: Admin
+      tags: Etiquetas
+      sign_out: Desconectar
+      offer_public_link: Enlace público a ofertas
+      inquiry_public_link: Enlace público a demandas
+    menu:
+      sign_in: Entra
+      sing_out: Desconectar
+    organization_list:
+      welcome: Bienvenido a Timeoverflow %{user}.
+      not_member: No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto con uno de los bancos de tiempo que están integrados en la plataforma
+      time_bank: Banco de tiempo
+      email: Correo
+      phone: Teléfono
+      public_opening_times: Horario de atención al público
+      description: Descripción
+      address: Dirección
+      neighborhood: Barrio
+      city: Ciudad
+    tips:
+      entertag: Entre etiquetas separadas por comas
+      user_not_found: "Usuario no encontrado."
+  # views/users/index...
+
+  users:
+
+    index:
+      create: Crear nuevo usuario
+      manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
+      cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
+      active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
+      actions: Acciones
+      user_created: "Usuario %{uid} %{name} guardado"
+    new:
+      new_user: Nuevo usuario
+      create_more_users_button: Crear e introducir otro usuario
+      cancel: Cancelar
+      user_created_add: "Usuario %{uid} %{name} guardado. Introduce ahora el siguiente"
+    edit:
+      edit_user: Cambiar usuario
+    show:
+      phone:
+        one: Teléfono
+        other: Teléfonos
+      data: Datos del usuario
+      categories: Servicios Ofrecidos
+      account: Últimos movimientos
+      inactive: "(Inactivo)"
+      accounts: Cuentas
+      created_at: "Alta:"
+      user_no: "Nº Usuario:"
+      balance: "Balance:"
+      date: Fecha
+      from_to: Origen/Destino
+      post: Anuncio
+      reason: Razón
+      quantity: Cantidad
+      inactive_user: El usuario no está activo
+      deleted_user:  El usuario ya no existe
+
+    give_time:
+      give_time: Dar Tiempo a
+    form:
+      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
+      admin_warning: Atención!!! Estás dando poderes a este usuario!!
+    user_rows:
+      activate: Activar
+      deactivate: Desactivar
+      manage_warning: "Va a cambiar los privilegios del usuario %{user}"
+      cancel_warning: "Va a eliminar del banco al usuario %{user}"
+      active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
+
+  tags:
+    alpha_grouped_index:
+      maintitle: "Etiquetas Disponibles"
+
+  terms:
+    accept: Aceptar
+
+  offers:
+    index:
+      offered_by: "Ofrecido por %{size} personas"
+      new_offer: "Nueva oferta"
+      filter: Filtrar
+      by_category: Por categoría
+      by_tag: Por etiqueta
+    show:
+      offered_by: "Ofertantes"
+      give_time_for: "Transferir tiempo por esta oferta"
+    new:
+      submit: Crear oferta
+    edit:
+      submit: Cambiar oferta
+
+  inquiries:
+    index:
+      new_inquiry: Nueva demanda
+    new:
+      submit: Crear demanda
+    edit:
+      submit: Cambiar demanda
+
+  posts:
+    show:
+      info: "%{type} de %{organization} para ver los datos de la persona tienes que"
+
+  categories:
+    index:
+      all: Todas
+      tree: Principales
+      global: Globales
+      local: Locales
+      add: Añadir servicio
+
+  reports:
+    cat_with_users:
+      title: Servicios ofrecidos
+    user_list:
+      title: Listado usuarios
+    download: Descargar
+
+  statistics:
+    statistics_global_activity:
+      bank_activity: "Actividad del banco"
+      per_month: "Por meses"
+      global_activity: "Actividad global"
+      users_reg: " Altas de usuario"
+      num_swaps: " Intercambios"
+      total_hours: " Horas intercambiadas"
+      show: Mostrar
+      ini_date: "mm/aaaa inicial"
+      end_date: "mm/aaaa final"
+    statistics_inactive_users:
+      inactive_users: Usuarios inactivos
+      last_movement: Útimo intercambio
+      no_movements: Sin intercambios
+      days_without_swaps: Días sin intercambios
+    statistics_demographics:
+      demographics: Datos demográficos
+      by_ages: Por edades
+      by_gender: Por género
+      male: Hombre
+      female: Mujer
+      unknown: Desconocido
+      num_people: Nº personas
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
+    statistics_without_offers:
+      without_offers: Sin ofertas
+    statistics_type_swaps:
+      type_of_swaps: Tipos de intercambios
+      without_tags: Sin etiquetas
+      without_category: Sin categoría
+    statistics_all_transfers:
+      transfers: Todas las transferencias
+      date: Fecha
+      from: Origen
+      to: Destino
+      post: Anuncio
+      reason: Razón
+      quantity: Cantidad
+      delete_reason: ¿Está seguro de borrar este comentario?
+
+  stats:
+    min_balance:
+      title: Usuarios Saldo Mínimo
+
+  organizations:
+    index:
+      member_count: Número de usuarios
+    new:
+      new: Nuevo banco
+    show:
+      contact_information: Información de contacto
+    give_time:
+      give_time: Dar Tiempo a
+
+  transfers:
+    computation:
+      joiner: " y "
+      hour:
+        one: ! '%{count} hora'
+        other: ! '%{count} horas'
+      minute:
+        one: ! '%{count} minuto'
+        other: ! '%{count} minutos'
+
+  global:
+    table:
+      actions: Acciones
+    show: Mostrar
+    edit: Modificar
+    delete: Borrar
+    save: Guardar
+    add_new: Crear nuevo
+    cancel_membership: Borrar definitivamente
+    back: Atrás
+    give_time: Transferir tiempo
+    filter: Filtro
+    all: Todo
+    search: Buscar
+    information: Información
+    member_count: 'Número de usuarios:'
+    balance: 'Balance:'
+    movements: Movimientos
+    date: Fecha
+    source_destination: 'Origen/Destino'
+    announcements: Anuncio
+    reason: Razón
+    amount: Cantidad
+    demote: Convertir en usuario normal
+    promote: Convertir en administrador
+    statistics: Estadísticas
+    locales_header: cambiar idioma
+    required_field: "* Campo obligatorio"
+    more: "Ver más"
+    contact_details: "Datos de contacto"
+
+  locales:
+    en: Inglés
+    es: Español
+    ca: Catalán
+
+  active_admin:
+    comments:
+      resource_type: Tipo de recurso
+      author_type: Tipo de autor
+    users:
+      upload_csv: Fichero
+      organization: Banco de tiempo
+      upload_from_csv: Importar CSV
+
+  layouts:
+    application:
+      about: Sobre TimeOverflow
+      login: Entra
+      edit_profile: Modificar mi perfil
+      edit_org: "Modificar %{organization}"
+      help: Ayuda
+    report:
+      report_title: "INFORME"
+
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Ultima &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "&hellip;"
+
+  shared:
+    movements:
+      delete_reason: ¿Está seguro de borrar este comentario?
+      movements: Movimientos
+    post_form:
+      you_can_use: Puedes usar
+
+  pages:
+    about:
+      title: "El software diseñado por y para"
+      title2: "los Bancos de Tiempo"
+      subtitle: "TimeOverflow es libre, gratuito y colaborativo"
+      feature-group-1: "Gestión del Banco de Tiempo con perfiles de administración"
+      feature-group-2: "Red social y banca on-line accesible por los miembros"
+      feature-text-1: "Altas/bajas/modificaciones de miembros"
+      feature-text-2: "Publicar ofertas y demandas"
+      feature-text-3: "Introducir cheques y gestionar la contabilidad"
+      feature-text-4: "Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros"
+      feature-text-5: "Publicar ofertas y demandas"
+      feature-text-6: "Pagar horas a otros miembros"
+      banner-title: "¿Eres un Banco de Tiempo?"
+      banner-subtitle: "Os ayudaremos a ponerlo en marcha o a haceros una demostración"
+      banner-button: "Solicita acceso"
+      empower-title: "Empoderando los bancos de tiempo"
+      empower-text-1: "TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos."
+      empower-text-2: "Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita."
+      empower-text-3: "El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}"
+      empower-showmap: "ver mapa"
+      empower-showmap-title: "Bancos de Tiempo"
+      empower-coopdevs: "CoopDevs"
+      empower-coopdevs-title: "CoopDevs"
+      empower-adbdt: "ADBdT"
+      empower-adbdt-title: "Asociación para el Desarrollo de los Bancos de Tiempo"
+      empower-github: "Github"
+      empower-github-title: "Github"

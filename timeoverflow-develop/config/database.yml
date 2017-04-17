@@ -1,0 +1,30 @@
+# If you want to change this file, please keep the changes in your working
+# copy by using
+#
+#     git update-index --skip-worktree config/database.yml
+#
+# or just use DATABASE_URL, in which case Rails will happily skip the whole
+# file.
+#
+# See https://github.com/coopdevs/timeoverflow/wiki/Keeping-your-local-files
+# for more information
+#
+
+defaults: &defaults
+  adapter: postgresql
+  host: <%= ENV['DATABASE_HOST'] %>  # default is localhost
+  username: <%= ENV['DATABASE_USER'] %>  # default is null
+  password: <%= ENV['DATABASE_PASSWORD'] %>  # default is null
+  encoding: utf8
+
+development:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_development') %>
+
+test:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_test') %>
+
+production:
+  # Set DATABASE_URL environment variable
+  url: <%= ENV['DATABASE_URL'] %>
